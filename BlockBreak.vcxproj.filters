@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{12472531-a0a6-4416-ac3a-934efbecbf27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{a2b89f8b-486d-4233-9813-46031ae5e441}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{af8051d4-06dc-4ea4-b0bd-262d32797f5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Others">
+      <UniqueIdentifier>{ffb37bc4-5995-4d40-b18c-987c896e5f09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Others\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Main\Others\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Main\Others\소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{afed1b7a-3e8c-4c42-991f-a8d02fafc102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces\Sound">
+      <UniqueIdentifier>{397f2ce4-b556-46a0-9f5f-f445faef75b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces\Timer">
+      <UniqueIdentifier>{6a2d404e-cac1-40d9-8ad7-e4935ead2f1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces\Framework">
+      <UniqueIdentifier>{ca657752-6639-4118-b369-486169c1ede7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Loading">
+      <UniqueIdentifier>{f3d92a0a-b661-4964-a141-acfbfc083c3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Main">
+      <UniqueIdentifier>{3e017372-68f2-4f0f-89b7-40872d08b664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Title">
+      <UniqueIdentifier>{798d1703-05ad-4ad5-b1d5-a201d15ef933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Calculator">
+      <UniqueIdentifier>{94dee807-0ebf-47dd-9223-2548db21bb1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Ball">
+      <UniqueIdentifier>{d073fdc1-0d7d-4cc0-bb1a-dcb31c9814c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Board">
+      <UniqueIdentifier>{49c0f9cb-7c94-4678-9cf1-0c95bccdf0be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Obstacle">
+      <UniqueIdentifier>{9be445ce-edf1-4f2a-92f2-578cddc7c74d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces\Animation">
+      <UniqueIdentifier>{802f1301-1143-413c-9be5-1e1638b7b588}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Interfaces\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework.h">
+      <Filter>Interfaces\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Main\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Main\Others</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Interfaces\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Scene\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScene.h">
+      <Filter>Scene\Loading</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Calculator</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Object\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Object\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstacle.h">
+      <Filter>Object\Obstacle</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Interfaces\Animation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Interfaces\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework.cpp">
+      <Filter>Interfaces\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main\Others</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Interfaces\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScene.cpp">
+      <Filter>Scene\Loading</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Scene\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Calculator</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Object\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Object\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="Obstacle.cpp">
+      <Filter>Object\Obstacle</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Interfaces\Animation</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BlockBreak.rc">
+      <Filter>Main\Others\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Main\Others\리소스 파일</Filter>
+    </Image>
+    <Image Include="BlockBreak.ico">
+      <Filter>Main\Others\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
