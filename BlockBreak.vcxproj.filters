@@ -46,9 +46,6 @@
     <Filter Include="Scene\Title">
       <UniqueIdentifier>{798d1703-05ad-4ad5-b1d5-a201d15ef933}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Calculator">
-      <UniqueIdentifier>{94dee807-0ebf-47dd-9223-2548db21bb1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Object\Ball">
       <UniqueIdentifier>{d073fdc1-0d7d-4cc0-bb1a-dcb31c9814c7}</UniqueIdentifier>
     </Filter>
@@ -60,6 +57,12 @@
     </Filter>
     <Filter Include="Interfaces\Animation">
       <UniqueIdentifier>{802f1301-1143-413c-9be5-1e1638b7b588}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Manager">
+      <UniqueIdentifier>{840ab8f1-9e50-424b-bcce-ebec0487f15d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Calculator">
+      <UniqueIdentifier>{94dee807-0ebf-47dd-9223-2548db21bb1c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,10 +106,10 @@
       <Filter>Scene\Loading</Filter>
     </ClInclude>
     <ClInclude Include="Vector2D.h">
-      <Filter>Calculator</Filter>
+      <Filter>Object\Calculator</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
-      <Filter>Calculator</Filter>
+      <Filter>Object\Calculator</Filter>
     </ClInclude>
     <ClInclude Include="Ball.h">
       <Filter>Object\Ball</Filter>
@@ -119,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Interfaces\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Object\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +159,7 @@
       <Filter>Scene\Main</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
-      <Filter>Calculator</Filter>
+      <Filter>Object\Calculator</Filter>
     </ClCompile>
     <ClCompile Include="Ball.cpp">
       <Filter>Object\Ball</Filter>

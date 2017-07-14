@@ -26,6 +26,7 @@
 #include <list>
 #include <string>
 #include <algorithm>
+#include <functional>
 #include <future>
 #include <cassert>
 #include <chrono>

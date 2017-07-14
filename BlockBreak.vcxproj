@@ -147,6 +147,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="LoadingScene.h" />
     <ClInclude Include="MainScene.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
