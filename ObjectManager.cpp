@@ -1,6 +1,12 @@
 #include "stdafx.h"
 #include "ObjectManager.h"
 
+CObjectManager::~CObjectManager()
+{
+	std::for_each(m_objects.begin(), m_objects.end(), [](CGameObject *obj) {delete obj; });
+	m_objects.clear();
+}
+
 void CObjectManager::Delete(CGameObject * obj)
 {
 	assert(!"삭제하고자 하는 요소를 찾지 못하였습니다.");

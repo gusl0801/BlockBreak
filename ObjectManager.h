@@ -4,13 +4,16 @@
 class CObjectManager
 {
 public:
+	~CObjectManager();
+public:
 	void Add(CGameObject *obj) { m_objects.emplace_back(obj); }
 	void Delete(CGameObject *obj);
 	void Delete();
 
 	void Update(float deltaTime) { Each([deltaTime](CGameObject *obj) {obj->Update(deltaTime); }); }
 	void Draw(HDC hdc) { Each([hdc](CGameObject *obj) {obj->Draw(hdc); }); }
-	
+	void Move(Vector2i dir) { Each([dir](CGameObject *obj) {obj->Move(dir); }); }
+
 	void CheckCollision(const CBoundingBox *that) {}
 	void CheckCollision(const CBoundingCircle *that) {}
 	void CheckCollision(const CBoundingPlane *that) {}

@@ -29,13 +29,19 @@ public:
 
 public:
 	Vector2D<T> operator+(const Vector2D<T> &other) const { return { x + other, y + other.y }; }
+	Vector2D<T> operator+(int scalar) const { return { x + scalar, y + scalar }; }
 	Vector2D<T> operator-(const Vector2D<T> &other) const { return { x - other, y - other.y }; }
+	Vector2D<T> operator-(int scalar) const { return { x - scalar, y - scalar }; }
 	Vector2D<T> operator*(const Vector2D<T> &other) const { return { x * other, y * other.y }; }
+	Vector2D<T> operator*(int scalar) const { return { x * scalar, y * scalar }; }
 	Vector2D<T> operator/(const Vector2D<T> &other) const { return { x / other, y / other.y }; }
 	
 	Vector2D<T>& operator+=(const Vector2D<T> &other) { return *this = *this + other; }
+	Vector2D<T>& operator+=(int sclar) { return *this = *this + sclar; }
 	Vector2D<T>& operator-=(const Vector2D<T> &other) { return *this = *this - other; }
+	Vector2D<T>& operator-=(int sclar) { return *this = *this - sclar; }
 	Vector2D<T>& operator*=(const Vector2D<T> &other) { return *this = *this * other; }
+	Vector2D<T>& operator*=(int sclar) { return *this = *this * sclar; }
 	Vector2D<T>& operator/=(const Vector2D<T> &other) { return *this = *this / other; }
 	Vector2D<T>& operator= (const Vector2D<T> &other) { x = other.x, y = other.y; return *this; }
 
