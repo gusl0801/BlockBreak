@@ -114,9 +114,6 @@
     <ClInclude Include="Ball.h">
       <Filter>Object\Ball</Filter>
     </ClInclude>
-    <ClInclude Include="Board.h">
-      <Filter>Object\Board</Filter>
-    </ClInclude>
     <ClInclude Include="Obstacle.h">
       <Filter>Object\Obstacle</Filter>
     </ClInclude>
@@ -125,6 +122,9 @@
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>Object\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Object\Board</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
