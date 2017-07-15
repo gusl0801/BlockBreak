@@ -1,5 +1,12 @@
 #pragma once
 
+enum class CollisionBounary
+{
+	None,
+	Box,
+	Circle,
+	Plane
+};
 class CBoundingCircle;
 class CBoundingPlane;
 

@@ -11,9 +11,11 @@ public:
 	void Update(float deltaTime) { Each([deltaTime](CGameObject *obj) {obj->Update(deltaTime); }); }
 	void Draw(HDC hdc) { Each([hdc](CGameObject *obj) {obj->Draw(hdc); }); }
 	
-	void CheckCollision(const CBoundingBox &that) {}
-	void CheckCollision(const CBoundingCircle &that) {}
-	void CheckCollision(const CBoundingPlane &that) {}
+	void CheckCollision(const CBoundingBox *that) {}
+	void CheckCollision(const CBoundingCircle *that) {}
+	void CheckCollision(const CBoundingPlane *that) {}
+
+	void CheckCollision(CObjectManager &that);
 
 private:
 	void Each(std::function<void (CGameObject*)> action) { for_each(m_objects.begin(), m_objects.end(), action); }

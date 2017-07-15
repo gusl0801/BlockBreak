@@ -14,5 +14,7 @@ public:
 	void CheckCollision(const CBoundingBox &that) {};
 	void CheckCollision(const CBoundingCircle &that) {};
 	void CheckCollision(const CBoundingPlane &that) {};
+
+	virtual CollisionBounary getCollisionBoundary(void **addr) = 0;
 };
 

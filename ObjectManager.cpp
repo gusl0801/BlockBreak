@@ -12,3 +12,30 @@ void CObjectManager::Delete(CGameObject * obj)
 void CObjectManager::Delete()
 {
 }
+
+void CObjectManager::CheckCollision(CObjectManager &that)
+{
+	void			*boundaryThat;
+	CollisionBounary typeThat;
+
+	for (auto i = this->m_objects.begin(); i != this->m_objects.end(); ++i)
+	{
+		for (auto j = that.m_objects.begin(); j != that.m_objects.end(); ++j)
+		{
+			typeThat = (*j)->getCollisionBoundary(&boundaryThat);
+			
+			switch (typeThat)
+			{
+			case CollisionBounary::Box:
+				CheckCollision(static_cast<CBoundingBox*>(boundaryThat));
+				break;
+			case CollisionBounary::Circle:
+				CheckCollision(static_cast<CBoundingCircle*>(boundaryThat));
+				break;
+			case CollisionBounary::Plane:
+				CheckCollision(static_cast<CBoundingPlane*>(boundaryThat));
+				break;
+			}
+		}
+	}
+}
