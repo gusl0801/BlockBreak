@@ -173,6 +173,9 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Interfaces\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Object\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BlockBreak.rc">
