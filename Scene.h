@@ -11,6 +11,12 @@ enum class SceneTag
 
 class CScene
 {
+private:
+	static const std::unordered_map<string, SceneTag> sceneNameToTag;
+
+private:
+	CGameFramework *m_framework;
+	
 public:
 	CScene();
 	virtual ~CScene();
@@ -27,10 +33,5 @@ public:
 
 protected:
 	void ChangeScene(string sceneName);
-
-private:
-	CGameFramework *m_framework;
-
-	static const std::unordered_map<string, SceneTag> sceneNameToTag;
 };
 

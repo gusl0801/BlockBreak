@@ -15,6 +15,9 @@ using TimerVal = _TimerVal<double>;
 	
 class CGameTimer
 {
+private:
+	TimerVal m_basicTimer;
+
 public:
 	CGameTimer();
 	~CGameTimer();
@@ -22,9 +25,6 @@ public:
 public:
 	double getTimeElapsed() const { return m_basicTimer.timeElapsed.count(); }
 	void Tick();
-	
-private:
-	TimerVal m_basicTimer;
 };
 
 /*
@@ -37,13 +37,6 @@ private:
 */
 class CFrameTimer : public CGameTimer
 {
-public:
-	CFrameTimer();
-	
-	double getFrameRate();
-private:
-	void Update();
-
 private:
 	TimerVal m_timeChecker;
 
@@ -51,4 +44,11 @@ private:
 	int m_nSumCount;
 
 	double m_fps;
+
+public:
+	CFrameTimer();
+	
+	double getFrameRate();
+private:
+	void Update();
 };

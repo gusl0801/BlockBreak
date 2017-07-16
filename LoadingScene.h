@@ -5,6 +5,14 @@
 class CLoadingScene :
 	public CScene
 {
+private:
+	int test = 0;
+	std::future<void> result;
+	string fileName;
+	CImage t;
+	CAnimator m_loadingImage;
+
+	bool m_bOnRoading;
 public:
 	CLoadingScene();
 	~CLoadingScene();
@@ -21,14 +29,5 @@ public:
 
 private:
 	void ReadFromFile(string fileName);
-
-private:
-	int test = 0;
-	std::future<void> result;
-	string fileName;
-	CImage t;
-	CAnimator m_loadingImage;
-
-	bool m_bOnRoading;
 };
 

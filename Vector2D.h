@@ -4,6 +4,13 @@ template <class T>
 class Vector2D
 {
 public:
+	union
+	{
+		T arr[2];
+		struct { T x, y; };
+	};
+
+public:
 	Vector2D() { x = y = T{}; }
 	Vector2D(T x, T y) :x(x), y(y) {}
 	~Vector2D() {}
@@ -47,13 +54,6 @@ public:
 
 	bool operator==(const Vector2D<T> &other) const { return (x == other.x && y == other.y); }
 	bool operator!=(const Vector2D<T> &other) const { return (x != other.x && y != other.y); }
-
-public:
-	union
-	{
-		T arr[2];
-		struct { T x, y; };
-	};
 };
 
 using Vector2i = Vector2D<int>;

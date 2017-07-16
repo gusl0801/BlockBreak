@@ -4,6 +4,9 @@
 class CObstacle :
 	public CGameObject
 {
+private:
+	CBoundingBox m_boundingBox;
+
 public:
 	CObstacle();
 	~CObstacle();
@@ -13,8 +16,5 @@ public:
 	virtual void Draw(HDC hdc) override;
 
 	virtual CollisionBounary getCollisionBoundary(void **addr) override;
-
-private:
-	CBoundingBox m_boundingBox;
 };
 

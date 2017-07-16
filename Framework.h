@@ -5,6 +5,23 @@ using VIEW_PORT = RECT;
 
 class CGameFramework
 {
+private:
+	HWND					m_hWnd;
+	HINSTANCE				m_hInst;
+
+	HDC						m_hDC;		// 실제 화면에 그리기 위해 필요한 디바이스 컨텍스트입니다.
+	HBITMAP					m_hBuffer;	// 화면에 그리기 전에 그려질 버퍼 입니다.
+
+	VIEW_PORT				m_viewPort;	// 그려질 화면 영역 크기
+
+	CScene					*m_curScene;// 현재 진행중인 장면
+
+	CFrameTimer				m_timer;
+	double					m_timeLag;
+
+	TCHAR m_captionTitle[50];
+	int m_titleLength;
+
 public:
 	CGameFramework();
 	~CGameFramework();
@@ -27,22 +44,5 @@ public:
 private:
 	void InitBuffer();
 	void InitViewPort();
-
-private:
-	HWND					m_hWnd;
-	HINSTANCE				m_hInst;
-
-	HDC						m_hDC;		// 실제 화면에 그리기 위해 필요한 디바이스 컨텍스트입니다.
-	HBITMAP					m_hBuffer;	// 화면에 그리기 전에 그려질 버퍼 입니다.
-
-	VIEW_PORT				m_viewPort;	// 그려질 화면 영역 크기
-
-	CScene					*m_curScene;// 현재 진행중인 장면
-	
-	CFrameTimer				m_timer;	
-	double					m_timeLag;
-
-	TCHAR m_captionTitle[50];
-	int m_titleLength;
 };
 

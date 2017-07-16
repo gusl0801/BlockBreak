@@ -8,6 +8,11 @@ class CBoard;
 class CMainScene :
 	public CScene
 {
+private:
+	CObjectManager	m_ballManager;
+	CObjectManager	m_obstacleManager;
+	CObjectManager  m_boardManager;
+
 public:
 	CMainScene();
 	~CMainScene();
@@ -23,10 +28,5 @@ public:
 
 private:
 	void BuildObjects();
-
-private:
-	CObjectManager	m_ballManager;
-	CObjectManager	m_obstacleManager;
-	CObjectManager  m_boardManager;
 };
 
