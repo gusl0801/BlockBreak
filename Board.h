@@ -1,13 +1,21 @@
 #pragma once
 #include "GameObject.h"
+
+//namespace DefineOfBoard
+//{
+//	const double MAX_SPEED = 0.0f;
+//	const double MIN_SPEED = 0.0f;
+//};
 class CBoard :
 	public CGameObject
 {
 private:
 	CBoundingBox m_boundingBox;
+	double m_friction;		// ¸¶Âû
+	double m_velocity;		// ¼Ó·Â
 
 public:
-	CBoard(RECT position);
+	CBoard(Rect position);
 	~CBoard();
 
 public:

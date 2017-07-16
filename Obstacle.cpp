@@ -22,5 +22,5 @@ void CObstacle::Draw(HDC hdc)
 
 CollisionBounary CObstacle::getCollisionBoundary(void ** addr)
 {
-	return CollisionBounary();
+	return CollisionBounary::Box;
 }

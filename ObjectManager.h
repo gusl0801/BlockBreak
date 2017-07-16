@@ -15,7 +15,8 @@ public:
 
 	void Update(float deltaTime) { Each([deltaTime](CGameObject *obj) {obj->Update(deltaTime); }); }
 	void Draw(HDC hdc) { Each([hdc](CGameObject *obj) {obj->Draw(hdc); }); }
-	void Move(Vector2i dir) { Each([dir](CGameObject *obj) {obj->Move(dir); }); }
+	void Move(Vector2d dir) { Each([dir](CGameObject *obj) {obj->Move(dir); }); }
+	void Move(DWORD dir, double velocity) { Each([dir, velocity](CGameObject *obj) {obj->Move(dir, velocity); }); }
 
 	void CheckCollision(const CBoundingBox *that) {}
 	void CheckCollision(const CBoundingCircle *that) {}

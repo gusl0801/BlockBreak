@@ -10,7 +10,7 @@ CGameObject::CGameObject(Vector2i position, Vector2i size)
 	m_position.bottom = position.y + size.y;
 }
 
-CGameObject::CGameObject(RECT position)
+CGameObject::CGameObject(Rect position)
 	:m_position(position)
 {
 }
@@ -20,18 +20,38 @@ CGameObject::~CGameObject()
 {
 }
 
-void CGameObject::Move(Vector2i dir)
+void CGameObject::Move(const Vector2d &dir, bool nowUpdate)
 {
-	m_position.left += dir.x;
-	m_position.right += dir.x;
-	m_position.bottom += dir.y;
-	m_position.top += dir.y;
+	if (nowUpdate)
+	{
+		m_position.left += dir.x;
+		m_position.right += dir.x;
+		m_position.bottom += dir.y;
+		m_position.top += dir.y;
+	}
+	else
+	{
+		m_movingDir = Vector2d::Clamp(m_movingDir + dir, DefineOfObject::MIN_SPEED, DefineOfObject::MAX_SPEED);
+	}
 }
 
-void CGameObject::Move(Vector2i dir, int velocity)
+void CGameObject::Move(const Vector2d &dir, double velocity)
 {
-	dir *= velocity;
+	Move(dir * velocity);
+}
 
-	Move(dir);
+void CGameObject::Move(DWORD dir, double velocity)
+{
+	if (dir != 0)
+	{
+		if (dir & DIR_LEFT)
+		{
+			Move({ -velocity, 0 }, false);
+		}
+		if (dir & DIR_RIGHT)
+		{
+			Move({ velocity, 0 }, false);
+		}
+	}
 }
 

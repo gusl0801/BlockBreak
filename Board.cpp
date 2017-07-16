@@ -2,7 +2,7 @@
 #include "Board.h"
 
 
-CBoard::CBoard(RECT position)
+CBoard::CBoard(Rect position)
 	:CGameObject(position)
 {
 }
@@ -14,6 +14,20 @@ CBoard::~CBoard()
 
 void CBoard::Update(float deltaTime)
 {
+	if (m_movingDir.isZero()) return;
+
+//	double velocity;
+	const double stopSpeed = 4.0f;
+	Vector2d velocity = m_movingDir * deltaTime;
+	
+	Move(velocity, true);
+	m_movingDir -= velocity;
+
+	if (m_movingDir.Length() < stopSpeed)
+	{
+		m_movingDir.x = 0;
+		m_movingDir.y = 0;
+	}
 }
 
 void CBoard::Draw(HDC hdc)
@@ -23,5 +37,5 @@ void CBoard::Draw(HDC hdc)
 
 CollisionBounary CBoard::getCollisionBoundary(void ** addr)
 {
-	return CollisionBounary();
+	return CollisionBounary::Box;
 }
