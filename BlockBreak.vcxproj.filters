@@ -126,6 +126,9 @@
     <ClInclude Include="Board.h">
       <Filter>Object\Board</Filter>
     </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Object\Calculator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene.cpp">

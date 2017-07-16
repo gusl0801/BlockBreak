@@ -23,10 +23,11 @@ public:
 	virtual void Update(float deltaTime) override;
 	virtual void ProcessInput() override;
 
-	virtual LRESULT ProcessingKeyboardMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
-	virtual LRESULT ProcessingMouseMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
+	virtual LRESULT ProcessingKeyboardMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) override;
+	virtual LRESULT ProcessingMouseMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) override;
 
 private:
 	void BuildObjects();
+	void CheckCollsion();
 };
 

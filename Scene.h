@@ -26,6 +26,7 @@ public:
 public:
 	virtual void Draw(HDC hdc) {}
 	virtual void Update(float deltaTime) {}
+	
 	virtual void ProcessInput() {}
 
 	virtual LRESULT ProcessingKeyboardMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam) { return FALSE; }

@@ -37,6 +37,10 @@ public:
 	void Draw(HDC hdc);
 	
 public:
+	// 다중 입력 처리
+	void ProcessFunc();
+
+	// 기본 입력 처리
 	LRESULT ProcessingWindowMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT ProcessingKeyboardMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT ProcessingMouseMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);

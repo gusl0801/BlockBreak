@@ -65,6 +65,7 @@ void CGameFramework::ChangeScene(SceneTag tag)
 
 void CGameFramework::ProcessInput()
 {
+	m_curScene->ProcessInput();
 }
 
 void CGameFramework::FrameAdvance()
@@ -77,8 +78,9 @@ void CGameFramework::FrameAdvance()
 	{
 		m_timeLag -= MS_PER_UPDATE;
 		loopCount += 1;
+
+		ProcessInput();
 		Update();
-		
 	}
 	
 	// 업데이트 및 따라잡기가 끝나면 렌더링
@@ -142,7 +144,6 @@ LRESULT CGameFramework::ProcessingWindowMessage(HWND hWnd, UINT iMsg, WPARAM wPa
 
 LRESULT CGameFramework::ProcessingKeyboardMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
-	std::cout << "press key" << std::endl;
 	return m_curScene->ProcessingKeyboardMessage(hWnd, iMsg, wParam, lParam);
 }
 

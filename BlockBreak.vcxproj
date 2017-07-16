@@ -149,6 +149,7 @@
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SoundManager.h" />
