@@ -24,9 +24,12 @@ public:
 	//ccw or cw
 	//http://bowbowbow.tistory.com/14
 	float Cross(const Vector2D<T> &other) const { return (x * other.y) - (y * other.x); }
-	
+
 	//반사 벡터를 계산한다.
-	Vector2D<T> Reflect(const Vector2D<T> &other) const;
+	// return value : reflection Vector
+	// parameter : collision position
+	// this : Incident Vector
+	Vector2D<T> Reflect(const Vector2D<T> &collsion) const;
 
 	//벡터를 정규화시킨다.
 	void Normalize();
@@ -70,4 +73,11 @@ inline Vector2D<T> Vector2D<T>::Clamp(const Vector2D<T>& that, double low, doubl
 	double x = clamp(that.x, low, high);
 	double y = clamp(that.y, low, high);
 	return Vector2D<T>{x, y};
+}
+
+template<class T>
+inline Vector2D<T> Vector2D<T>::Reflect(const Vector2D<T>& collsion) const
+{
+	Vector2d normal;
+	return Vector2D<T>();
 }

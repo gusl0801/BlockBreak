@@ -10,6 +10,8 @@ CBall::CBall(Vector2d center, int radius)
 
 	// 1초에 화면 세로 길이의 절반 만큼 이동
 	m_movingDir = { 0, CLIENT_HEIGHT *0.5f };
+
+	m_boundingCircle = CBoundingCircle(center, radius);
 }
 
 
@@ -20,6 +22,13 @@ CBall::~CBall()
 void CBall::Update(float deltaTime)
 {
 	Move(m_movingDir * deltaTime);
+	m_center += m_movingDir * deltaTime;
+
+	if (m_position.bottom >= CLIENT_HEIGHT)
+	{
+	//	m_movingDir.Reflect();
+	}
+	m_boundingCircle.Transform(m_center);
 }
 
 void CBall::Draw(HDC hdc)
@@ -29,5 +38,6 @@ void CBall::Draw(HDC hdc)
 
 CollisionBounary CBall::getCollisionBoundary(void ** addr)
 {
+	*addr = &m_boundingCircle;
 	return CollisionBounary::Circle;
 }

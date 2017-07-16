@@ -5,6 +5,7 @@
 CBoard::CBoard(Rect position)
 	:CGameObject(position)
 {
+	m_boundingBox = CBoundingBox(position);
 }
 
 
@@ -28,6 +29,7 @@ void CBoard::Update(float deltaTime)
 		m_movingDir.x = 0;
 		m_movingDir.y = 0;
 	}
+	m_boundingBox.Transform(m_position);
 }
 
 void CBoard::Draw(HDC hdc)
@@ -37,5 +39,6 @@ void CBoard::Draw(HDC hdc)
 
 CollisionBounary CBoard::getCollisionBoundary(void ** addr)
 {
+	*addr = &m_boundingBox;
 	return CollisionBounary::Box;
 }

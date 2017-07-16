@@ -108,4 +108,6 @@ void CMainScene::BuildObjects()
 
 void CMainScene::CheckCollsion()
 {
+	m_boardManager.CheckCollision(m_ballManager);
+	m_ballManager.CheckCollision(m_obstacleManager);
 }

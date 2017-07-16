@@ -4,7 +4,7 @@ class CBall :
 	public CGameObject
 {
 private:
-	CBoundingCircle m_boundingBox;
+	CBoundingCircle m_boundingCircle;
 
 	Vector2d m_center;
 	int m_radius;

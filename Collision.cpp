@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "Collision.h"
 
-
-CBoundingBox::CBoundingBox(RECT box)
+CBoundingBox::CBoundingBox(Rect box)
 	:m_box(box)
 {
 }
@@ -10,6 +9,11 @@ CBoundingBox::CBoundingBox(RECT box)
 
 CBoundingBox::~CBoundingBox()
 {
+}
+
+void CBoundingBox::Transform(Rect box)
+{
+	m_box = box;
 }
 
 bool CBoundingBox::isCollide(const CBoundingBox & that) const
@@ -28,14 +32,18 @@ bool CBoundingBox::isCollide(const CBoundingPlane & that) const
 }
 
 
-CBoundingCircle::CBoundingCircle(Vector2i center, float radius)
+CBoundingCircle::CBoundingCircle(Vector2d center, float radius)
 	:m_center(center), m_radius(radius)
 {
 }
 
-
 CBoundingCircle::~CBoundingCircle()
 {
+}
+
+void CBoundingCircle::Transform(Vector2d center)
+{
+	m_center = center;
 }
 
 bool CBoundingCircle::isCollide(const CBoundingBox & that) const
@@ -54,7 +62,7 @@ bool CBoundingCircle::isCollide(const CBoundingPlane & that) const
 }
 
 
-CBoundingPlane::CBoundingPlane(Vector2i pos_a, Vector2i pos_b)
+CBoundingPlane::CBoundingPlane(Vector2d pos_a, Vector2d pos_b)
 {
 }
 
