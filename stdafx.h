@@ -38,10 +38,14 @@ using std::list;
 using std::string;
 #include "Resource.h"
 #include "Vector2D.h"
+#include "Rect.h"
 
 // DEFINE
 #define CLIENT_HEIGHT 640
 #define CLIENT_WIDTH 540
+
+#define DIR_LEFT 0x01
+#define DIR_RIGHT 0x02
 
 // TYPE DEFINE
 
@@ -82,4 +86,13 @@ inline float wrap(float data, float MAX)
 inline int clamp(int data, int low, int high)
 {
 	return min(max(data, low), high);
+}
+inline double clamp(double data, double low, double high)
+{
+	return min(max(data, low), high);
+}
+
+inline bool isZero(double data)
+{
+	return std::fabs(data) < std::numeric_limits<double>::epsilon();
 }
