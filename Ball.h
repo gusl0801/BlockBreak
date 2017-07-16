@@ -6,13 +6,11 @@ class CBall :
 private:
 	CBoundingCircle m_boundingBox;
 
-	Vector2i m_center;
+	Vector2d m_center;
 	int m_radius;
 
-	Vector2i m_movingDir;
-
 public:
-	CBall(Vector2i center, int radius);
+	CBall(Vector2d center, int radius);
 	~CBall();
 
 public:

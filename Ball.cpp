@@ -2,13 +2,14 @@
 #include "Ball.h"
 
 
-CBall::CBall(Vector2i center, int radius)
-	:CGameObject(RECT{ center.x - radius , center.y - radius ,center.x + radius,center.y + radius })
+CBall::CBall(Vector2d center, int radius)
+	:CGameObject(Rect{ center.x - radius , center.y - radius ,center.x + radius,center.y + radius })
 {
 	m_center = center;
 	m_radius = radius;
 
-	m_movingDir = { 0, 5 };
+	// 1초에 화면 세로 길이의 절반 만큼 이동
+	m_movingDir = { 0, CLIENT_HEIGHT *0.5f };
 }
 
 
@@ -18,7 +19,7 @@ CBall::~CBall()
 
 void CBall::Update(float deltaTime)
 {
-	Move(m_movingDir);
+	Move(m_movingDir * deltaTime);
 }
 
 void CBall::Draw(HDC hdc)
@@ -28,5 +29,5 @@ void CBall::Draw(HDC hdc)
 
 CollisionBounary CBall::getCollisionBoundary(void ** addr)
 {
-	return CollisionBounary();
+	return CollisionBounary::Circle;
 }
