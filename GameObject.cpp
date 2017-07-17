@@ -55,3 +55,8 @@ void CGameObject::Move(DWORD dir, double velocity)
 	}
 }
 
+void CGameObject::Stop()
+{
+	m_movingDir.x = m_movingDir.y = 0;
+}
+

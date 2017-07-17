@@ -36,5 +36,7 @@ public:
 	void Move(const Vector2d &dir, double velocity);
 	
 	void Move(DWORD dir, double velocity);
+
+	void Stop();
 };
 

@@ -26,8 +26,7 @@ void CBoard::Update(float deltaTime)
 
 	if (m_movingDir.Length() < stopSpeed)
 	{
-		m_movingDir.x = 0;
-		m_movingDir.y = 0;
+		Stop();
 	}
 	m_boundingBox.Transform(m_position);
 }
