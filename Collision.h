@@ -17,7 +17,11 @@ private:
 
 public:
 	CBoundingBox(Rect box = Rect{});
+	CBoundingBox(Vector2d center, double radius);
 	~CBoundingBox();
+
+public:
+	static void Extend(CBoundingBox &that, double radius);
 
 public:
 	void Transform(Rect box);

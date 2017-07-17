@@ -36,6 +36,8 @@ void CObjectManager::CheckCollision(CObjectManager &that)
 				CheckCollision(static_cast<CBoundingBox*>(boundaryThat));
 				break;
 			case CollisionBounary::Circle:
+				if ((*i)->CheckCollision(*static_cast<CBoundingCircle*>(boundaryThat)))
+					(*j)->Stop();
 				CheckCollision(static_cast<CBoundingCircle*>(boundaryThat));
 				break;
 			case CollisionBounary::Plane:

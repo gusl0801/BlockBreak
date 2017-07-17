@@ -23,9 +23,9 @@ public:
 	virtual void Update(float deltaTime) = 0;
 	virtual void Draw(HDC hdc) = 0;
 
-	void CheckCollision(const CBoundingBox &that) {};
-	void CheckCollision(const CBoundingCircle &that) {};
-	void CheckCollision(const CBoundingPlane &that) {};
+	virtual bool CheckCollision(const CBoundingBox &that) { return false; };
+	virtual bool CheckCollision(const CBoundingCircle &that) { return false; };
+	virtual bool CheckCollision(const CBoundingPlane &that) { return false; };
 
 	virtual CollisionBounary getCollisionBoundary(void **addr) = 0;
 

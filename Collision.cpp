@@ -6,9 +6,26 @@ CBoundingBox::CBoundingBox(Rect box)
 {
 }
 
+CBoundingBox::CBoundingBox(Vector2d center, double radius)
+{
+	m_box.left = center.x - radius;
+	m_box.right = center.x + radius;
+	m_box.top = center.y - radius;
+	m_box.bottom = center.y + radius;
+}
+
 
 CBoundingBox::~CBoundingBox()
 {
+}
+
+
+void CBoundingBox::Extend(CBoundingBox &that, double radius)
+{
+	that.m_box.left -= radius;
+	that.m_box.top -= radius;
+	that.m_box.bottom += radius;
+	that.m_box.right += radius;
 }
 
 void CBoundingBox::Transform(Rect box)
@@ -18,12 +35,18 @@ void CBoundingBox::Transform(Rect box)
 
 bool CBoundingBox::isCollide(const CBoundingBox & that) const
 {
-	return false;
+	if (m_box.left >= that.m_box.right) return false;
+	if (m_box.right <= that.m_box.left) return false;
+	if (m_box.top >= that.m_box.bottom) return false;
+	if (m_box.bottom <= that.m_box.top) return false;
+	
+	std::cout << "Ãæµ¹" << std::endl;
+	return true;
 }
 
 bool CBoundingBox::isCollide(const CBoundingCircle & that) const
 {
-	return false;
+	return that.isCollide(*this);
 }
 
 bool CBoundingBox::isCollide(const CBoundingPlane & that) const
@@ -48,7 +71,12 @@ void CBoundingCircle::Transform(Vector2d center)
 
 bool CBoundingCircle::isCollide(const CBoundingBox & that) const
 {
-	return false;
+	CBoundingBox extendedBox = that.getBox();
+
+	CBoundingBox::Extend(extendedBox, m_radius * 0.5f);
+
+	CBoundingBox a(m_center, m_radius);
+	return extendedBox.isCollide(a);
 }
 
 bool CBoundingCircle::isCollide(const CBoundingCircle & that) const
