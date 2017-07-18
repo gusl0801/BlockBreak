@@ -20,6 +20,7 @@ CScene::~CScene()
 void CScene::OnCreate(CGameFramework * framework)
 {
 	m_framework = framework;
+	m_viewPort = m_framework->getViewPort();
 }
 
 void CScene::ChangeScene(string sceneName)

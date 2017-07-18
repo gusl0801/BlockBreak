@@ -104,11 +104,11 @@ void CMainScene::BuildObjects()
 	CBoard *board = new CBoard({ xPos - xSize, yPos - ySize, xPos + xSize, yPos + ySize });
 	m_boardManager.Add(board);
 
-	CBoundingPlane top{ { 0,0 }, { CLIENT_WIDTH, 0 } };
-	CBoundingPlane bottom{ { 0,CLIENT_HEIGHT}, { CLIENT_WIDTH, CLIENT_HEIGHT} };
-	CBoundingPlane left{{ 0,0 }, { 0, CLIENT_HEIGHT }};
-	CBoundingPlane right{ { CLIENT_WIDTH,0 }, { CLIENT_WIDTH, CLIENT_HEIGHT } };
-	
+	CBoundingPlane top{ { 0,0 }, { static_cast<double>(m_viewPort.right), 0 } };
+	CBoundingPlane bottom{ { 0, static_cast<double>(m_viewPort.bottom) }, { static_cast<double>(m_viewPort.right),  static_cast<double>(m_viewPort.bottom) } };
+	CBoundingPlane left{{ 0,0 }, { 0,  static_cast<double>(m_viewPort.bottom) }};
+	CBoundingPlane right{ { static_cast<double>(m_viewPort.right),0 }, { static_cast<double>(m_viewPort.right),  static_cast<double>(m_viewPort.bottom) } };
+
 	m_wallPlanes[0] = top;	
 	m_wallPlanes[1] = bottom;
 	m_wallPlanes[2] = left;

@@ -37,6 +37,8 @@ bool CGameFramework::OnCreate(HWND hWnd, HINSTANCE hInst)
 	m_curScene->OnCreate(this);
 
 	m_timer.Tick();
+
+	GetClientRect(m_hWnd, &m_viewPort);
 	return true;
 }
 

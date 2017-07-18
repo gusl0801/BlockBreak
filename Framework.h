@@ -35,7 +35,7 @@ public:
 	void FrameAdvance();
 	void Update();
 	void Draw(HDC hdc);
-	
+
 public:
 	// 다중 입력 처리
 	void ProcessFunc();
@@ -44,6 +44,9 @@ public:
 	LRESULT ProcessingWindowMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT ProcessingKeyboardMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
 	LRESULT ProcessingMouseMessage(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
+
+public:
+	VIEW_PORT getViewPort() const { return m_viewPort; }
 
 private:
 	void InitBuffer();

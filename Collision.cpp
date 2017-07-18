@@ -141,7 +141,7 @@ bool CBoundingPlane::isCollide(const CBoundingCircle & that) const
 	}
 
 	length = Vector2d::Length(point, that.getCenter());
-	return length <= that.getRadius() * 2;
+	return length <= that.getRadius();
 }
 
 bool CBoundingPlane::isCollide(const CBoundingPlane & that) const

@@ -1,5 +1,6 @@
 #pragma once
 class CGameFramework;
+using VIEW_PORT = RECT;
 
 enum class SceneTag
 {
@@ -17,6 +18,9 @@ private:
 private:
 	CGameFramework *m_framework;
 	
+protected:
+	VIEW_PORT m_viewPort;
+
 public:
 	CScene();
 	virtual ~CScene();
