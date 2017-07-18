@@ -19,11 +19,8 @@ public:
 	void Move(DWORD dir, double velocity) { Each([dir, velocity](CGameObject *obj) {obj->Move(dir, velocity); }); }
 	void Stop() { Each([](CGameObject *obj) {obj->Stop(); }); }
 
-	void CheckCollision(const CBoundingBox *that) {}
-	void CheckCollision(const CBoundingCircle *that) {}
-	void CheckCollision(const CBoundingPlane *that) {}
-
 	void CheckCollision(CObjectManager &that);
+	void CheckCollision(const CBoundingPlane &plane);
 
 private:
 	void Each(std::function<void (CGameObject*)> action) { for_each(m_objects.begin(), m_objects.end(), action); }

@@ -11,7 +11,7 @@ public:
 	};
 public:
 	static Vector2D<T> Clamp(const Vector2D<T> &that, double low, double high);
-
+	static double Length(const Vector2D<T> &a, const Vector2D<T> &b);
 public:
 	Vector2D() { x = y = T{}; }
 	Vector2D(T x, T y) :x(x), y(y) {}
@@ -73,6 +73,12 @@ inline Vector2D<T> Vector2D<T>::Clamp(const Vector2D<T>& that, double low, doubl
 	double x = clamp(that.x, low, high);
 	double y = clamp(that.y, low, high);
 	return Vector2D<T>{x, y};
+}
+
+template<class T>
+inline double Vector2D<T>::Length(const Vector2D<T>& a, const Vector2D<T>& b)
+{
+	return std::sqrt(std::pow((a.x - b.x), 2) + std::pow((a.y - b.y), 2));
 }
 
 template<class T>

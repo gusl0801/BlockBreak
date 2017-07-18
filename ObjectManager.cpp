@@ -33,17 +33,28 @@ void CObjectManager::CheckCollision(CObjectManager &that)
 			switch (typeThat)
 			{
 			case CollisionBounary::Box:
-				CheckCollision(static_cast<CBoundingBox*>(boundaryThat));
 				break;
 			case CollisionBounary::Circle:
 				if ((*i)->CheckCollision(*static_cast<CBoundingCircle*>(boundaryThat)))
+				{
+					std::cout << "충돌" << std::endl;
 					(*j)->Stop();
-				CheckCollision(static_cast<CBoundingCircle*>(boundaryThat));
+				}
 				break;
 			case CollisionBounary::Plane:
-				CheckCollision(static_cast<CBoundingPlane*>(boundaryThat));
 				break;
 			}
 		}
 	}
+}
+
+void CObjectManager::CheckCollision(const CBoundingPlane & plane)
+{
+	Each([plane](CGameObject *obj) 
+	{
+		if (obj->CheckCollision(plane)) {
+			std::cout << "충돌" << std::endl;
+			obj->Stop();
+		}
+	});
 }

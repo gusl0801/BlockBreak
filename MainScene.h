@@ -13,6 +13,8 @@ private:
 	CObjectManager	m_obstacleManager;
 	CObjectManager  m_boardManager;
 
+	array<CBoundingPlane,4>  m_wallPlanes;
+
 public:
 	CMainScene();
 	~CMainScene();

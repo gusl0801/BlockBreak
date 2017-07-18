@@ -24,6 +24,7 @@
 #include <map>
 #include <unordered_map>
 #include <list>
+#include <array>
 #include <string>
 #include <algorithm>
 #include <functional>
@@ -36,6 +37,7 @@ using std::map;
 using std::unordered_map;
 using std::list;
 using std::string;
+using std::array;
 #include "Resource.h"
 #include "Vector2D.h"
 #include "Rect.h"

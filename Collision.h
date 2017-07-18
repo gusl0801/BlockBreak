@@ -29,6 +29,7 @@ public:
 	bool isCollide(const CBoundingBox &that) const;
 	bool isCollide(const CBoundingCircle &that) const;
 	bool isCollide(const CBoundingPlane &that) const;
+	bool isInside(const Vector2d &vector);
 
 	Rect getBox() const { return m_box; }
 };
@@ -55,6 +56,11 @@ public:
 	float getRadius() const { return m_radius; }
 };
 
+enum class PlaneType
+{
+	Horizon,
+	Vertical
+};
 class CBoundingPlane
 {
 private:
@@ -63,15 +69,17 @@ private:
 		Vector2d m_arr[2];
 		struct { Vector2d m_a, m_b; };
 	};
+	PlaneType m_type;
 
 public:
 	CBoundingPlane(Vector2d pos_a = Vector2d{}, Vector2d pos_b = Vector2d{});
 	~CBoundingPlane();
 
+	void operator=(const CBoundingPlane &other);
 public:
-	bool isCollide(const CBoundingBox &that) const;
-	bool isCollide(const CBoundingCircle &that) const;
-	bool isCollide(const CBoundingPlane &that) const;
+	bool isCollide(const CBoundingBox &box) const;
+	bool isCollide(const CBoundingCircle &circle) const;
+	bool isCollide(const CBoundingPlane &plane) const;
 
 public:
 	Vector2d getPointA() const { return m_a; }

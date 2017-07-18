@@ -17,9 +17,9 @@ public:
 	virtual void Update(float deltaTime) override;
 	virtual void Draw(HDC hdc) override;
 
-	virtual bool CheckCollision(const CBoundingBox &that) override { return m_boundingCircle.isCollide(that); }
-	virtual bool CheckCollision(const CBoundingCircle &that) override { return m_boundingCircle.isCollide(that); }
-	virtual bool CheckCollision(const CBoundingPlane &that) override { return m_boundingCircle.isCollide(that); }
+	virtual bool CheckCollision(const CBoundingBox &box) override { return m_boundingCircle.isCollide(box); }
+	virtual bool CheckCollision(const CBoundingCircle &circle) override { return m_boundingCircle.isCollide(circle); }
+	virtual bool CheckCollision(const CBoundingPlane &plane) override { return m_boundingCircle.isCollide(plane); }
 
 	virtual CollisionBounary getCollisionBoundary(void **addr) override;
 };

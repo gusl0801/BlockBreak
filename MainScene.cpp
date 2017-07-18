@@ -66,7 +66,6 @@ void CMainScene::ProcessInput()
 		{
 			 m_boardManager.Move(dwDirection, 5.0f);
 		}
-		//m_pPlayer->Move(dwDirection, 500.0f * m_GameTimer.GetTimeElapsed(), true);
 	}
 }
 
@@ -104,10 +103,23 @@ void CMainScene::BuildObjects()
 	yPos = CLIENT_HEIGHT * 0.9f;
 	CBoard *board = new CBoard({ xPos - xSize, yPos - ySize, xPos + xSize, yPos + ySize });
 	m_boardManager.Add(board);
+
+	CBoundingPlane top{ { 0,0 }, { CLIENT_WIDTH, 0 } };
+	CBoundingPlane bottom{ { 0,CLIENT_HEIGHT}, { CLIENT_WIDTH, CLIENT_HEIGHT} };
+	CBoundingPlane left{{ 0,0 }, { 0, CLIENT_HEIGHT }};
+	CBoundingPlane right{ { CLIENT_WIDTH,0 }, { CLIENT_WIDTH, CLIENT_HEIGHT } };
+	
+	m_wallPlanes[0] = top;	
+	m_wallPlanes[1] = bottom;
+	m_wallPlanes[2] = left;
+	m_wallPlanes[3] = right;
 }
 
 void CMainScene::CheckCollsion()
 {
-	m_boardManager.CheckCollision(m_ballManager);
+	//m_boardManager.CheckCollision(m_ballManager);
 	m_ballManager.CheckCollision(m_obstacleManager);
+	
+	std::for_each(m_wallPlanes.begin(), m_wallPlanes.end(),
+		[&ballManager = m_ballManager](const CBoundingPlane &plane) {ballManager.CheckCollision(plane); });
 }
