@@ -21,11 +21,12 @@ void CObjectManager::Delete()
 
 void CObjectManager::CheckCollision(CObjectManager &that)
 {
-	void			*boundaryThat;
-	CollisionBounary typeThat;
+	void			*boundaryThat, *boundaryThis;
+	CollisionBounary typeThat, typeThis;
 
 	for (auto i = this->m_objects.begin(); i != this->m_objects.end(); ++i)
 	{
+		typeThis = (*i)->getCollisionBoundary(&boundaryThis);
 		for (auto j = that.m_objects.begin(); j != that.m_objects.end(); ++j)
 		{
 			typeThat = (*j)->getCollisionBoundary(&boundaryThat);
@@ -38,7 +39,10 @@ void CObjectManager::CheckCollision(CObjectManager &that)
 				if ((*i)->CheckCollision(*static_cast<CBoundingCircle*>(boundaryThat)))
 				{
 					std::cout << "Ãæµ¹" << std::endl;
-					(*j)->HandleCollision();
+					CBoundingPlane plane
+						= static_cast<CBoundingBox*>(boundaryThis)->getCollidePlane(*static_cast<CBoundingCircle*>(boundaryThat));
+					(*j)->HandleCollision(plane.getNormal());
+					//(*j)->Stop();
 				}
 				break;
 			case CollisionBounary::Plane:

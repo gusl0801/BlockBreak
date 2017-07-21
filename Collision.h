@@ -32,6 +32,8 @@ public:
 	bool isInside(const Vector2d &vector);
 
 	Rect getBox() const { return m_box; }
+
+	CBoundingPlane getCollidePlane(const CBoundingCircle &circle) const;
 };
 
 class CBoundingCircle

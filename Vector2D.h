@@ -40,6 +40,8 @@ public:
 	static float Length(const Vector2D<T> &that) { return sqrt(that.Dot()); }
 
 	bool isZero() const { return ::isZero(x) && ::isZero(y); }
+
+	double distance(const Vector2D<T> &ohter, double m) const;
 public:
 	Vector2D<T> operator+(const Vector2D<T> &other) const { return Vector2D<T>{ x + other.x, y + other.y }; }
 	Vector2D<T> operator+(double scalar) const { return Vector2D<T>{ x + scalar, y + scalar }; }
@@ -97,5 +99,22 @@ inline void Vector2D<T>::Normalize()
 	double length = this->Length();
 	x /= length;
 	y /= length;
+}
+
+template<class T>
+inline double Vector2D<T>::distance(const Vector2D<T> &other, double m) const
+{
+	// ax + by + c = 0
+	// y = m(x - x1) + y1
+	// mx - mx1 + y1 - y;
+	// mx - y + y1 - mx1
+	// a = m
+	// b = -1
+	// c = y1 - mx1
+	double a = m;
+	double b = -1;
+	double c = other.y - m * other.x;
+
+	return std::abs(a * x + b * y + c) / std::sqrt(a * a + b * b);
 }
 

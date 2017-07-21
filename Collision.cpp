@@ -61,6 +61,50 @@ bool CBoundingBox::isInside(const Vector2d & vector)
 	return hor && ver;
 }
 
+CBoundingPlane CBoundingBox::getCollidePlane(const CBoundingCircle &circle) const
+{
+	Vector2d center = circle.getCenter();
+	double radius = circle.getRadius();
+	double distances[4];
+
+	distances[0] = center.distance({ m_box.left, m_box.top }, 0);
+	distances[1] = center.distance({ m_box.right, (m_box.top + m_box.bottom) * 0.5f}, 0);
+	distances[2] = center.distance({ m_box.right, m_box.bottom }, 0);
+	distances[3] = center.distance({ m_box.left, (m_box.top + m_box.bottom) * 0.5f }, 0);
+
+	double distance = *std::min_element(std::begin(distances), std::end(distances));
+	int index;
+	for (int i = 0; i < 4; ++i) {
+		if (distances[i] == distance) {
+			index = i;
+			break;
+		}
+	}
+	
+	Vector2d vecA, vecB;
+	if (index == 0)		
+	{
+		vecA.x = m_box.left, vecA.y = m_box.top;
+		vecB.x = m_box.right, vecB.y = m_box.top;
+	}
+	else if (index == 1)
+	{
+		vecA.x = m_box.right, vecA.y = m_box.top;
+		vecB.x = m_box.right, vecB.y = m_box.bottom;
+	}
+	else if (index == 2)
+	{
+		vecA.x = m_box.right, vecA.y = m_box.bottom;
+		vecB.x = m_box.left, vecB.y = m_box.bottom;
+	}
+	else if (index == 3)
+	{
+		vecA.x = m_box.left, vecA.y = m_box.bottom;
+		vecB.x = m_box.left, vecB.y = m_box.top;
+	}
+	return CBoundingPlane(vecA, vecB);
+}
+
 
 CBoundingCircle::CBoundingCircle(Vector2d center, float radius)
 	:m_center(center), m_radius(radius)
