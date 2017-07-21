@@ -20,6 +20,16 @@ CGameObject::~CGameObject()
 {
 }
 
+void CGameObject::HandleCollision()
+{
+
+}
+
+void CGameObject::HandleCollision(Vector2d normal)
+{
+	m_movingDir = m_movingDir.Reflect(normal);
+}
+
 void CGameObject::Move(const Vector2d &dir, bool nowUpdate)
 {
 	if (nowUpdate)

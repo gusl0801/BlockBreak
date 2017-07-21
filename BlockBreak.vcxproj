@@ -141,6 +141,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="Line.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Framework.h" />

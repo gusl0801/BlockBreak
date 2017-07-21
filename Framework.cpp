@@ -39,7 +39,7 @@ bool CGameFramework::OnCreate(HWND hWnd, HINSTANCE hInst)
 	m_timer.Tick();
 
 	GetClientRect(m_hWnd, &m_viewPort);
-	return true;
+ 	return true;
 }
 
 void CGameFramework::ChangeScene(SceneTag tag)

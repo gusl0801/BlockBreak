@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Line.h"
 enum class CollisionBounary
 {
 	None,
@@ -61,6 +61,7 @@ enum class PlaneType
 	Horizon,
 	Vertical
 };
+
 class CBoundingPlane
 {
 private:
@@ -70,9 +71,10 @@ private:
 		struct { Vector2d m_a, m_b; };
 	};
 	PlaneType m_type;
+	WindingOrder m_windingOrder;
 
 public:
-	CBoundingPlane(Vector2d pos_a = Vector2d{}, Vector2d pos_b = Vector2d{});
+	CBoundingPlane(Vector2d pos_a = Vector2d{}, Vector2d pos_b = Vector2d{}, WindingOrder order = WindingOrder::CW);
 	~CBoundingPlane();
 
 	void operator=(const CBoundingPlane &other);
@@ -81,6 +83,8 @@ public:
 	bool isCollide(const CBoundingCircle &circle) const;
 	bool isCollide(const CBoundingPlane &plane) const;
 
+	Vector2d getNormal() const;
+	
 public:
 	Vector2d getPointA() const { return m_a; }
 	Vector2d getPointB() const { return m_b; }

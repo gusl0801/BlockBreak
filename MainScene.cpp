@@ -104,9 +104,9 @@ void CMainScene::BuildObjects()
 	CBoard *board = new CBoard({ xPos - xSize, yPos - ySize, xPos + xSize, yPos + ySize });
 	m_boardManager.Add(board);
 
-	CBoundingPlane top{ { 0,0 }, { static_cast<double>(m_viewPort.right), 0 } };
-	CBoundingPlane bottom{ { 0, static_cast<double>(m_viewPort.bottom) }, { static_cast<double>(m_viewPort.right),  static_cast<double>(m_viewPort.bottom) } };
-	CBoundingPlane left{{ 0,0 }, { 0,  static_cast<double>(m_viewPort.bottom) }};
+	CBoundingPlane top{ { 0,0 }, { static_cast<double>(m_viewPort.right), 0 }};
+	CBoundingPlane bottom{ { 0, static_cast<double>(m_viewPort.bottom) }, { static_cast<double>(m_viewPort.right),  static_cast<double>(m_viewPort.bottom) },WindingOrder::CCW };
+	CBoundingPlane left{{ 0,0 }, { 0,  static_cast<double>(m_viewPort.bottom) }, WindingOrder::CCW };
 	CBoundingPlane right{ { static_cast<double>(m_viewPort.right),0 }, { static_cast<double>(m_viewPort.right),  static_cast<double>(m_viewPort.bottom) } };
 
 	m_wallPlanes[0] = top;	
@@ -117,7 +117,7 @@ void CMainScene::BuildObjects()
 
 void CMainScene::CheckCollsion()
 {
-	//m_boardManager.CheckCollision(m_ballManager);
+	m_boardManager.CheckCollision(m_ballManager);
 	m_ballManager.CheckCollision(m_obstacleManager);
 	
 	std::for_each(m_wallPlanes.begin(), m_wallPlanes.end(),

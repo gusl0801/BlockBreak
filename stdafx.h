@@ -49,6 +49,12 @@ using std::array;
 #define DIR_LEFT 0x01
 #define DIR_RIGHT 0x02
 
+
+enum class WindingOrder
+{
+	CCW = 0,
+	CW
+};
 // TYPE DEFINE
 
 // µµ¼ö¹ý
@@ -65,6 +71,14 @@ using Radian = float;
 	#endif
 #endif
 
+#define PI 3.141592
+inline double DegreeToRadian(double angle)
+{
+	//180 degree = PI radian;
+	//1 degree = PI / 180  radian;
+	//x degree = x * PI / 180 radian
+	return angle * PI / 180;
+}
 inline int wrap(int data, int low, int high)
 {
 	assert(low < high);

@@ -82,8 +82,20 @@ inline double Vector2D<T>::Length(const Vector2D<T>& a, const Vector2D<T>& b)
 }
 
 template<class T>
-inline Vector2D<T> Vector2D<T>::Reflect(const Vector2D<T>& collsion) const
+inline Vector2D<T> Vector2D<T>::Reflect(const Vector2D<T>& normal) const
 {
-	Vector2d normal;
-	return Vector2D<T>();
+	Vector2D<T> reflect;
+	double _dot = this->Dot(normal);
+
+	reflect = *this - (normal * (_dot * 2));
+	return reflect;
 }
+
+template<class T>
+inline void Vector2D<T>::Normalize()
+{
+	double length = this->Length();
+	x /= length;
+	y /= length;
+}
+

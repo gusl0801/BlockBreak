@@ -7,6 +7,7 @@ namespace DefineOfObject
 	const double MAX_SPEED = CLIENT_WIDTH * 0.333f;
 	const double MIN_SPEED = -MAX_SPEED;
 }
+
 class CGameObject
 {
 protected:
@@ -26,6 +27,9 @@ public:
 	virtual bool CheckCollision(const CBoundingBox &that) { return false; };
 	virtual bool CheckCollision(const CBoundingCircle &that) { return false; };
 	virtual bool CheckCollision(const CBoundingPlane &that) { return false; };
+
+	virtual void HandleCollision();
+	void HandleCollision(Vector2d normal);
 
 	virtual CollisionBounary getCollisionBoundary(void **addr) = 0;
 

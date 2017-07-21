@@ -97,8 +97,8 @@ bool CBoundingCircle::isCollide(const CBoundingPlane & that) const
 }
 
 
-CBoundingPlane::CBoundingPlane(Vector2d pos_a, Vector2d pos_b)
-	:m_a(pos_a), m_b(pos_b)
+CBoundingPlane::CBoundingPlane(Vector2d pos_a, Vector2d pos_b, WindingOrder order)
+	:m_a(pos_a), m_b(pos_b), m_windingOrder(order)
 {
 	if (pos_a.x == pos_b.x)
 		m_type = PlaneType::Vertical;
@@ -117,6 +117,7 @@ void CBoundingPlane::operator=(const CBoundingPlane & other)
 	m_a = other.m_a;
 	m_b = other.m_b;
 	m_type = other.m_type;
+	m_windingOrder = other.m_windingOrder;
 }
 
 bool CBoundingPlane::isCollide(const CBoundingBox & that) const
@@ -147,4 +148,26 @@ bool CBoundingPlane::isCollide(const CBoundingCircle & that) const
 bool CBoundingPlane::isCollide(const CBoundingPlane & that) const
 {
 	return false;
+}
+
+Vector2d CBoundingPlane::getNormal() const
+{
+	double dx;
+	double dy;
+	
+	if (m_windingOrder == WindingOrder::CW)
+	{
+		dx = m_b.x - m_a.x;
+		dy = m_b.y - m_a.y;
+	}
+	else if (m_windingOrder == WindingOrder::CCW)
+	{
+		dx = m_a.x - m_b.x;
+		dy = m_a.y - m_b.y;
+	}
+	
+	Vector2d normal{ -dy, dx };
+
+	normal.Normalize();
+	return normal;
 }
