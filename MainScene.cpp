@@ -24,9 +24,9 @@ void CMainScene::OnCreate(CGameFramework * framework)
 
 void CMainScene::Draw(HDC hdc)
 {
-	m_ballManager.Draw(hdc);
 	m_obstacleManager.Draw(hdc);
 	m_boardManager.Draw(hdc);
+	m_ballManager.Draw(hdc);
 }
 
 void CMainScene::Update(float deltaTime)
@@ -92,7 +92,7 @@ void CMainScene::BuildObjects()
 {
 	CBall *ball;
 	double xPos = CLIENT_WIDTH * 0.5f;
-	double yPos = CLIENT_HEIGHT * 0.5f;
+	double yPos = CLIENT_HEIGHT * 0.7f;
 	double xSize = 50;
 	double ySize = 10;
 	double radius = 10.0f;
@@ -113,13 +113,25 @@ void CMainScene::BuildObjects()
 	m_wallPlanes[1] = bottom;
 	m_wallPlanes[2] = left;
 	m_wallPlanes[3] = right;
+
+	float width = m_viewPort.right / 7;
+	float height = m_viewPort.bottom / 10;
+
+	for (int i = 0; i < 7; ++i)
+	{
+		for (int j = 0; j < 7; ++j)
+		{
+			CObstacle *obstacle = new CObstacle({width * i, height * j, width * (i + 1), height * (j + 1)});
+			m_obstacleManager.Add(obstacle);
+		}
+	}
 }
 
 void CMainScene::CheckCollsion()
 {
 	m_boardManager.CheckCollision(m_ballManager);
-	m_ballManager.CheckCollision(m_obstacleManager);
-	
+	m_obstacleManager.CheckCollision(m_ballManager);
+
 	std::for_each(m_wallPlanes.begin(), m_wallPlanes.end(),
 		[&ballManager = m_ballManager](const CBoundingPlane &plane) {ballManager.CheckCollision(plane); });
 }

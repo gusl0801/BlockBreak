@@ -10,7 +10,7 @@ CBall::CBall(Vector2d center, int radius)
 
 	// 1초에 화면 길이의 절반 만큼 이동
 	m_movingDir = { CLIENT_WIDTH * 0.5f , CLIENT_HEIGHT *0.5f };
-	CLIENT_WIDTH * 0.5f;
+
 	m_boundingCircle = CBoundingCircle(center, radius);
 }
 

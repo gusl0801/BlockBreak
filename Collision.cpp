@@ -64,7 +64,6 @@ bool CBoundingBox::isInside(const Vector2d & vector)
 CBoundingPlane CBoundingBox::getCollidePlane(const CBoundingCircle &circle) const
 {
 	Vector2d center = circle.getCenter();
-	double radius = circle.getRadius();
 	double distances[4];
 
 	distances[0] = center.distance({ m_box.left, m_box.top }, 0);

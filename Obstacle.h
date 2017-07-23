@@ -8,7 +8,7 @@ private:
 	CBoundingBox m_boundingBox;
 
 public:
-	CObstacle();
+	CObstacle(Rect position);
 	~CObstacle();
 
 public:

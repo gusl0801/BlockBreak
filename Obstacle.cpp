@@ -2,8 +2,10 @@
 #include "Obstacle.h"
 
 
-CObstacle::CObstacle()
+CObstacle::CObstacle(Rect position)
+	:CGameObject(position)
 {
+	m_boundingBox = CBoundingBox(position);
 }
 
 
