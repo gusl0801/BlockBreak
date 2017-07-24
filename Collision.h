@@ -33,6 +33,13 @@ public:
 
 	Rect getBox() const { return m_box; }
 
+	Vector2d getCenter() const { return { (m_box.right + m_box.left) * 0.5, (m_box.top + m_box.bottom) * 0.5 }; }
+	Vector2d getLeftTop() const { return { m_box.left, m_box.top }; }
+	Vector2d getLeftBottom() const { return { m_box.left, m_box.bottom }; }
+	Vector2d getRightTop() const { return { m_box.right, m_box.top }; }
+	Vector2d getRightBottom() const { return { m_box.right, m_box.bottom }; }
+	
+	//double getVertexDistance() const { return ::distance(getCenter(), { m_box.right, m_box.bottom });}
 	CBoundingPlane getCollidePlane(const CBoundingCircle &circle) const;
 };
 
@@ -56,6 +63,9 @@ public:
 public:
 	Vector2d getCenter() const { return m_center; }
 	float getRadius() const { return m_radius; }
+
+private:
+	bool isInside(const Vector2d &point) const;
 };
 
 enum class PlaneType

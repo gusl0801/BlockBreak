@@ -66,6 +66,7 @@ CBoundingPlane CBoundingBox::getCollidePlane(const CBoundingCircle &circle) cons
 	Vector2d center = circle.getCenter();
 	double distances[4];
 
+	// 원의 중심에서 부터 가장 가까운 거리의 면을 찾아서 반환
 	distances[0] = center.distance({ m_box.left, m_box.top }, 0);
 	distances[1] = center.distance({ m_box.right, (m_box.top + m_box.bottom) * 0.5f}, 0);
 	distances[2] = center.distance({ m_box.right, m_box.bottom }, 0);
@@ -121,9 +122,20 @@ void CBoundingCircle::Transform(Vector2d center)
 
 bool CBoundingCircle::isCollide(const CBoundingBox & that) const
 {
-	CBoundingBox extendedBox = that.getBox();
+	/*CBoundingBox extendedBox = that.getBox();
 	CBoundingBox::Extend(extendedBox, m_radius);
-	return extendedBox.isInside(m_center);
+	return extendedBox.isInside(m_center);*/
+	CBoundingBox box = that.getBox();
+	CBoundingBox::Extend(box, m_radius);
+	if (box.isInside(m_center)) return true;
+
+	if (isInside(that.getLeftTop())) return true;
+	if (isInside(that.getRightTop())) return true;
+	if (isInside(that.getLeftBottom())) return true;
+	if (isInside(that.getRightBottom()))return true;
+
+	return false;
+	//std::cout << "여기까지" << std::endl;
 }
 
 bool CBoundingCircle::isCollide(const CBoundingCircle & that) const
@@ -137,6 +149,12 @@ bool CBoundingCircle::isCollide(const CBoundingCircle & that) const
 bool CBoundingCircle::isCollide(const CBoundingPlane & that) const
 {
 	return that.isCollide(*this);
+}
+
+bool CBoundingCircle::isInside(const Vector2d & point) const
+{
+	double distance_ = ::distance(point, m_center);
+	return distance_ <= m_radius;
 }
 
 

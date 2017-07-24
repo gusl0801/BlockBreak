@@ -38,7 +38,6 @@ void CObjectManager::CheckCollision(CObjectManager &that)
 			case CollisionBounary::Circle:
 				if ((*i)->CheckCollision(*static_cast<CBoundingCircle*>(boundaryThat)))
 				{
-					std::cout << "Ãæµ¹" << std::endl;
 					CBoundingPlane plane
 						= static_cast<CBoundingBox*>(boundaryThis)->getCollidePlane(*static_cast<CBoundingCircle*>(boundaryThat));
 					(*j)->HandleCollision(plane.getNormal());

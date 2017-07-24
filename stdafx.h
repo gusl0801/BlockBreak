@@ -71,6 +71,10 @@ using Radian = float;
 	#endif
 #endif
 
+inline double distance(const Vector2d &a, const Vector2d &b)
+{
+	return std::sqrt(std::pow(a.x - b.x, 2) + std::pow(a.y - b.y, 2));
+}
 #define PI 3.141592
 inline double DegreeToRadian(double angle)
 {

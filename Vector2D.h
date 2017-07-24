@@ -12,6 +12,8 @@ public:
 public:
 	static Vector2D<T> Clamp(const Vector2D<T> &that, double low, double high);
 	static double Length(const Vector2D<T> &a, const Vector2D<T> &b);
+	static Vector2D<T> Normalize(Vector2D<T> &that);
+
 public:
 	Vector2D() { x = y = T{}; }
 	Vector2D(T x, T y) :x(x), y(y) {}
@@ -33,8 +35,6 @@ public:
 
 	//벡터를 정규화시킨다.
 	void Normalize();
-	static void Normalize(Vector2D<T> &that);
-
 	//벡터의 길이를 계산한다.
 	float Length() const { return std::sqrt(Dot(*this)); }
 	static float Length(const Vector2D<T> &that) { return sqrt(that.Dot()); }
@@ -81,6 +81,15 @@ template<class T>
 inline double Vector2D<T>::Length(const Vector2D<T>& a, const Vector2D<T>& b)
 {
 	return std::sqrt(std::pow((a.x - b.x), 2) + std::pow((a.y - b.y), 2));
+}
+
+template<class T>
+inline Vector2D<T> Vector2D<T>::Normalize(Vector2D<T>& that)
+{
+	double length = that.Length();
+	that.x /= length;
+	that.y /= length;
+	return that;
 }
 
 template<class T>
