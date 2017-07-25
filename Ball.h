@@ -8,7 +8,9 @@ private:
 
 	Vector2d m_center;
 	int m_radius;
-
+	CImage m_image;
+	Vector2d m_size;
+	COLORREF m_eraseColor;
 public:
 	CBall(Vector2d center, int radius);
 	~CBall();

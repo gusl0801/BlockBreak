@@ -13,6 +13,8 @@ private:
 	CBoundingBox m_boundingBox;
 	double m_friction;		// ¸¶Âû
 	double m_velocity;		// ¼Ó·Â
+	CImage m_image;
+	Vector2d m_size;
 
 public:
 	CBoard(Rect position);

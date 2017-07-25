@@ -6,6 +6,8 @@ class CObstacle :
 {
 private:
 	CBoundingBox m_boundingBox;
+	CImage m_image;
+	Vector2d m_size;
 
 public:
 	CObstacle(Rect position);
