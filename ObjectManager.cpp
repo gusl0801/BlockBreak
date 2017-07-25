@@ -52,12 +52,8 @@ void CObjectManager::CheckCollision(CObjectManager &that)
 				break;
 			}
 		}
-		if (isCollide) {
-			i = this->Delete(*i);
-			break;
-		}
-		else
-			++i;
+		if (isCollide) break;
+		else ++i;
 	}
 }
 
@@ -70,4 +66,44 @@ void CObjectManager::CheckCollision(const CBoundingPlane & plane)
 			obj->HandleCollision(plane.getNormal());
 		}
 	});
+}
+
+void CObjectManager::CheckCollisionDelete(CObjectManager & that)
+{
+	void			*boundaryThat, *boundaryThis;
+	CollisionBounary typeThat, typeThis;
+
+	for (auto i = this->m_objects.begin(); i != this->m_objects.end();)
+	{
+		bool isCollide = false;
+		typeThis = (*i)->getCollisionBoundary(&boundaryThis);
+		for (auto j = that.m_objects.begin(); j != that.m_objects.end(); ++j)
+		{
+			typeThat = (*j)->getCollisionBoundary(&boundaryThat);
+
+			switch (typeThat)
+			{
+			case CollisionBounary::Box:
+				break;
+			case CollisionBounary::Circle:
+				if ((*i)->CheckCollision(*static_cast<CBoundingCircle*>(boundaryThat)))
+				{
+					CBoundingPlane plane
+						= static_cast<CBoundingBox*>(boundaryThis)->getCollidePlane(*static_cast<CBoundingCircle*>(boundaryThat));
+					(*j)->HandleCollision(plane.getNormal());
+					isCollide = true;
+				}
+				break;
+			case CollisionBounary::Plane:
+				break;
+			}
+		}
+		if (isCollide) {
+			i = this->Delete(*i);
+			break;
+		}
+		else
+			++i;
+	}
+
 }

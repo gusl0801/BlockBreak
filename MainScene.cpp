@@ -130,7 +130,7 @@ void CMainScene::BuildObjects()
 void CMainScene::CheckCollsion()
 {
 	m_boardManager.CheckCollision(m_ballManager);
-	m_obstacleManager.CheckCollision(m_ballManager);
+	m_obstacleManager.CheckCollisionDelete(m_ballManager);
 
 	std::for_each(m_wallPlanes.begin(), m_wallPlanes.end(),
 		[&ballManager = m_ballManager](const CBoundingPlane &plane) {ballManager.CheckCollision(plane); });

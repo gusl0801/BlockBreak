@@ -22,6 +22,7 @@ public:
 	void CheckCollision(CObjectManager &that);
 	void CheckCollision(const CBoundingPlane &plane);
 
+	void CheckCollisionDelete(CObjectManager &that);
 private:
 	void Each(std::function<void (CGameObject*)> action) { for_each(m_objects.begin(), m_objects.end(), action); }
 	void Each(std::function<void (CGameObject*)> action) const { for_each(m_objects.cbegin(), m_objects.cend(), action); }
