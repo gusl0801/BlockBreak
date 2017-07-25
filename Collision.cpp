@@ -122,9 +122,6 @@ void CBoundingCircle::Transform(Vector2d center)
 
 bool CBoundingCircle::isCollide(const CBoundingBox & that) const
 {
-	/*CBoundingBox extendedBox = that.getBox();
-	CBoundingBox::Extend(extendedBox, m_radius);
-	return extendedBox.isInside(m_center);*/
 	CBoundingBox box = that.getBox();
 	CBoundingBox::Extend(box, m_radius);
 	if (box.isInside(m_center)) return true;
@@ -135,7 +132,6 @@ bool CBoundingCircle::isCollide(const CBoundingBox & that) const
 	if (isInside(that.getRightBottom()))return true;
 
 	return false;
-	//std::cout << "여기까지" << std::endl;
 }
 
 bool CBoundingCircle::isCollide(const CBoundingCircle & that) const

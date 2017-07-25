@@ -10,8 +10,8 @@ public:
 	~CObjectManager();
 public:
 	void Add(CGameObject *obj) { m_objects.emplace_back(obj); }
-	void Delete(CGameObject *obj);
-	void Delete();
+	list<CGameObject*>::iterator Delete(CGameObject *obj);
+	list<CGameObject*>::iterator Delete();
 
 	void Update(float deltaTime) { Each([deltaTime](CGameObject *obj) {obj->Update(deltaTime); }); }
 	void Draw(HDC hdc) { Each([hdc](CGameObject *obj) {obj->Draw(hdc); }); }

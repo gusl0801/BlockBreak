@@ -38,8 +38,7 @@ public:
 	Vector2d getLeftBottom() const { return { m_box.left, m_box.bottom }; }
 	Vector2d getRightTop() const { return { m_box.right, m_box.top }; }
 	Vector2d getRightBottom() const { return { m_box.right, m_box.bottom }; }
-	
-	//double getVertexDistance() const { return ::distance(getCenter(), { m_box.right, m_box.bottom });}
+
 	CBoundingPlane getCollidePlane(const CBoundingCircle &circle) const;
 };
 
